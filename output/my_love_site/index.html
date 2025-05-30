@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <!-- 🎵 נגן שירים (מוסתר עד שמנגן) -->
+  <audio id="player" preload="none" crossorigin="anonymous"></audio>
+
+  <!-- 💖 Hero עם רקע מתחלף -->
+  <header class="hero">
+    <div id="bg1" class="hero-bg visible"></div>
+    <div id="bg2" class="hero-bg"></div>
+    <h1 id="mainTitle">  </h1>
+    <label class="upload-btn-bg">
+      <input type="file" id="uploadHeroBg" accept="image/*" style="display:none;">
+      שנה רקע עליון 📷
+    </label>
+  </header>
+
+  <!-- כפתורי פעולה -->
+  <div class="button-container">
+    <button id="playBtn" class="btn">LOVE U 💖</button>
+    <button id="letterBtn" class="btn">מכתב 💌</button>
+    <button id="shuffleGalleryBtn" class="btn">גלריה 🖼️</button>
+    <button id="uploadImgBtn" class="btn">העלה תמונה 📸</button>
+    <button id="uploadSongBtn" class="btn">העלה שיר 🎶</button>
+    <button id="boomBtn" class="btn">BOOM 💥</button>
+    <button id="songPlayerBtn" class="btn">נגן שיר 🎵</button>
+  </div>
+
+  <!-- גלריה -->
+  <main>
+    <div id="gallery" class="gallery"></div>
+  </main>
+
+  <!-- לייטבוקס תמונות -->
+  <div id="lightbox" class="lightbox">
+    <button class="close-btn" onclick="hideLightbox()">❌</button>
+    <img id="lightbox-img" src="" alt="תמונה" />
+  </div>
+
+  <!-- פופאפ מכתב אהבה -->
+  <div id="letterBox" class="letter-box">
+    <div class="letter-content">
+      <button class="close-btn" onclick="hideLetter()">❌</button>
+      <div id="letterTextView">
+        <p id="letterTextDisplay"></p>
+        <button id="editLetterBtn" class="btn">ערוך מכתב ✏️</button>
+      </div>
+      <div id="letterEditSection" style="display:none;">
+        <textarea id="loveLetterInput" rows="7"></textarea>
+        <div style="margin: 10px 0;">
+          <button id="saveLetterBtn" class="btn">שמור מכתב 💾</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- טיימר -->
+  <footer>
+    <div id="loveTimer"></div>
+    <p id="footerText">נוצר ע״י אחד שאוהב אותך מלאאאאאא 🥰</p>
+  </footer>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>

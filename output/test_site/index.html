@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TEST SITE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body>
+  <header>
+    <h1 style="--title-font: Segoe UI; --title-font-size: 60px">TEST SITE</h1>
+    <div id="loveTimer"></div>
+    <button id="letterBtn">Show Letter</button>
+  </header>
+
+  <main>
+    <div id="gallery"></div>
+    <div id="lightbox"><img id="lightbox-img" /></div>
+    <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin:24px 0;">
+      <button id="playBtn">I LOVE U</button>
+      <button id="shuffleGalleryBtn">Shuffle Gallery</button>
+      <button id="approvedBtn">BOOM</button>
+    </div>
+    <div id="letterBox" style="display:none;">
+      <div id="letterContent">I LOVE YOUUUU</div>
+      <button onclick="hideLetter()" style="margin-top:18px;">Close</button>
+    </div>
+  </main>
+
+  <footer>
+    <div id="editLetterSection">
+      <h3>Edit Love Letter</h3>
+      <textarea id="editLetterInput" rows="4" placeholder="Write or update your love letter here...">I LOVE YOUUUU</textarea>
+      <button onclick="updateLetterAndSendMail()">Save Letter</button>
+    </div>
+    <div style="margin-top:30px; font-size:0.95em;">MA BABY</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function updateLetter() {
+      const val = document.getElementById("editLetterInput").value;
+      document.getElementById("letterContent").textContent = val;
+    }
+    function updateLetterAndSendMail() {
+      updateLetter();
+      sendLetterMail();
+    }
+    function hideLetter() {
+      document.getElementById("letterBox").style.display = "none";
+    }
+    document.getElementById("letterBtn").onclick = function() {
+      document.getElementById("letterBox").style.display = "block";
+    }
+  </script>
+</body>
+</html>

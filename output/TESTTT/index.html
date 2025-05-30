@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf‑8" />
+  <title>TESTTT SITEEEE</title>
+  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <!-- 🎵 Hidden audio player -->
+  <audio id="player" preload="none" crossorigin="anonymous"></audio>
+
+  <!-- 💖 Hero with cross‑fade backgrounds -->
+  <header class="hero">
+    <div id="bg1" class="hero-bg visible"></div>
+    <div id="bg2" class="hero-bg"></div>
+    <h1 id="mainTitle" style='font-family:  "Segoe UI", "Helvetica Neue", Arial, sans-serif; font-size: 50px;'>
+      TESTTT SITEEEE
+    </h1>
+    <label class="upload-btn-bg">
+      <input type="file" id="uploadHeroBg" accept="image/*" style="display:none;">
+      שנה רקע עליון 📷
+    </label>
+  </header>
+
+  <!-- 🚀 Action buttons -->
+  <div class="button-container">
+    <button id="playBtn" class="btn">LOVE U 💖</button>
+    <button id="letterBtn" class="btn">מכתב 💌</button>
+    <button id="playBtn" class="btn">נגן שיר 🎵</button>
+    <button id="shuffleGalleryBtn" class="btn">גלריה 🖼️</button>
+    <button id="uploadImgBtn" class="btn">העלה תמונה 📸</button>
+    <button id="uploadSongBtn" class="btn">העלה שיר 🎶</button>
+    <button id="boomBtn" class="btn">BOOM 💥</button>
+  </div>
+
+  <!-- 🖼️ Image gallery -->
+  <main>
+    <div id="gallery" class="gallery"></div>
+  </main>
+
+  <!-- 🔍 Image lightbox -->
+  <div id="lightbox" class="lightbox">
+    <button class="close-btn" onclick="hideLightbox()">❌</button>
+    <img id="lightbox-img" src="" alt="תמונה" />
+  </div>
+
+  <!-- 💌 Love‑letter popup -->
+  <div id="letterBox" class="letter-box">
+    <div class="letter-content">
+      <button class="close-btn" onclick="hideLetter()">❌</button>
+      <div id="letterTextView">
+        <p id="letterTextDisplay">אוהב אותך מלא מלחא</p>
+        <button id="editLetterBtn" class="btn">ערוך מכתב ✏️</button>
+      </div>
+      <div id="letterEditSection" style="display:none;">
+        <textarea id="loveLetterInput" rows="7">אוהב אותך מלא מלחא</textarea>
+        <div style="margin: 10px 0;">
+          <button id="saveLetterBtn" class="btn">שמור מכתב 💾</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⏱️ Timer footer -->
+  <footer>
+    <div id="loveTimer"></div>
+    <p id="footerText">נוצר ע״י אחד שאוהב אותך מלאאאאאא 🥰</p>
+  </footer>
+
+</body>
+</html>

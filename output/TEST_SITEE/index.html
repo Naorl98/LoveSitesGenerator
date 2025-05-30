@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <title>TEST SITE LOVE</title>
+  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+<body>
+  <!-- 🎵 נגן שירים (מוסתר עד שמנגן) -->
+  <audio id="player" preload="none" crossorigin="anonymous"></audio>
+
+  <!-- 💖 Hero עם רקע מתחלף -->
+  <header class="hero">
+    <div id="bg1" class="hero-bg visible"></div>
+    <div id="bg2" class="hero-bg"></div>
+    <h1 id="mainTitle"> TEST SITE LOVE </h1>
+    <label class="upload-btn-bg">
+      <input type="file" id="uploadHeroBg" accept="image/*" style="display:none;">
+      שנה רקע עליון 📷
+    </label>
+  </header>
+
+  <!-- כפתורי פעולה -->
+  <div class="button-container">
+    <button id="letterBtn" class="btn">מכתב 💌</button>
+    <button id="shuffleGalleryBtn" class="btn">גלריה 🖼️</button>
+    <button id="uploadImgBtn" class="btn">העלה תמונה 📸</button>
+    <button id="uploadSongBtn" class="btn">העלה שיר 🎶</button>
+    <button id="songPlayerBtn" class="btn">נגן שיר 🎵</button>
+  </div>
+
+  <!-- גלריה -->
+  <main>
+    <div id="gallery" class="gallery"></div>
+  </main>
+
+  <!-- לייטבוקס תמונות -->
+  <div id="lightbox" class="lightbox">
+    <button class="close-btn" onclick="hideLightbox()">❌</button>
+    <img id="lightbox-img" src="" alt="תמונה" />
+  </div>
+
+  <button id="boomBtn" class="floating-svg-btn boom-btn">
+    <svg viewBox="0 0 120 120" width="120" height="120" style="display:block">
+      <defs>
+        <!-- גרדיאנט תלת מימדי לפצצה -->
+        <radialGradient id="bombGradient" cx="40%" cy="30%" r="75%">
+          <stop offset="0%" stop-color="#444"/>
+          <stop offset="70%" stop-color="#151515"/>
+          <stop offset="100%" stop-color="#000"/>
+        </radialGradient>
+        <filter id="shadowBomb" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="0" dy="7" stdDeviation="6" flood-color="#000" flood-opacity="0.34"/>
+        </filter>
+      </defs>
+      <!-- גוף הפצצה -->
+      <circle cx="60" cy="75" r="38" fill="url(#bombGradient)" filter="url(#shadowBomb)" stroke="#fff" stroke-width="2"/>
+      <!-- פתיל -->
+      <rect x="54" y="28" width="12" height="22" rx="6" fill="#666" />
+      <!-- ניצוץ -->
+      <circle cx="60" cy="26" r="8" fill="#ffbe58" stroke="#fff7" stroke-width="2"/>
+      <path d="M60 18 L60 6" stroke="#ffbe58" stroke-width="3"/>
+      <path d="M56 14 L52 4" stroke="#ffd080" stroke-width="2"/>
+      <path d="M64 14 L68 4" stroke="#ffd080" stroke-width="2"/>
+      <!-- ברק על הפצצה -->
+      <ellipse cx="50" cy="75" rx="13" ry="6" fill="#fff" fill-opacity="0.14"/>
+      <!-- טקסט ורוד כהה על הפצצה -->
+      <text x="60" y="86" text-anchor="middle" font-size="26" font-family="Arial Black,Arial,sans-serif"
+            fill="#c2185b" stroke="#fff" stroke-width="1.4" paint-order="stroke"
+            style="filter: drop-shadow(0 2px 10px #fd5da8c0); letter-spacing: 2px;">
+        BOOM
+      </text>
+    </svg>
+  </button>
+  
+
+<button id="loveBtn" class="floating-svg-btn love-btn">
+  <svg viewBox="0 0 120 120" width="120" height="120" style="display:block">
+    <defs>
+      <!-- גרדיאנט תלת מימדי ללב -->
+      <radialGradient id="heartGradient" cx="60%" cy="35%" r="70%">
+        <stop offset="0%" stop-color="#ffb3da"/>
+        <stop offset="60%" stop-color="#fd5da8"/>
+        <stop offset="100%" stop-color="#c2185b"/>
+      </radialGradient>
+      <filter id="shadowHeart" x="-10%" y="-10%" width="120%" height="120%">
+        <feDropShadow dx="0" dy="7" stdDeviation="6" flood-color="#c2185b" flood-opacity="0.38"/>
+      </filter>
+    </defs>
+    <!-- לב תלת מימדי -->
+    <path 
+      d="M60 108s-46-31-46-62A28 28 0 0160 20a28 28 0 0146 26c0 31-46 62-46 62z"
+      fill="url(#heartGradient)" filter="url(#shadowHeart)" stroke="#fff" stroke-width="2"/>
+    <!-- ברק (highlights) -->
+    <ellipse cx="55" cy="45" rx="15" ry="8" fill="#fff" fill-opacity="0.26" />
+    <ellipse cx="75" cy="35" rx="9" ry="4" fill="#fff" fill-opacity="0.17" />
+    <!-- טקסט לבן במרכז -->
+    <text x="60" y="78" text-anchor="middle" font-size="24" font-family="Arial Black,Arial,sans-serif"
+          fill="#fff" stroke="#c2185b" stroke-width="1.2" paint-order="stroke"
+          style="filter: drop-shadow(0 2px 8px #ad145780); letter-spacing: 2px;">
+      LOVE U
+    </text>
+  </svg>
+</button>
+
+
+  <!-- פופאפ מכתב אהבה -->
+  <div id="letterBox" class="letter-box">
+    <div class="letter-content">
+      <button class="close-btn" onclick="hideLetter()">❌</button>
+      <div id="letterTextView">
+        <p id="letterTextDisplay">גדשלגכגזףצ דחגכףלךגכךצפ</p>
+        <button id="editLetterBtn" class="btn">ערוך מכתב ✏️</button>
+      </div>
+      <div id="letterEditSection" style="display:none;">
+        <textarea id="loveLetterInput" rows="7">גדשלגכגזףצ דחגכףלךגכךצפ</textarea>
+        <div style="margin: 10px 0;">
+          <button id="saveLetterBtn" class="btn">שמור מכתב 💾</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- טיימר -->
+  <footer>
+    <div id="loveTimer"></div>
+    <p id="footerText">נוצר ע״י אחד שאוהב אותך מלאאאאאא 🥰</p>
+  </footer>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
