@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+body {
+  margin: 0;
+  font-family: 'Orbitron', 'Noto Sans Hebrew', Arial, sans-serif;
+  background: #020210;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+.neon-bg {
+  position: fixed;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  top: 0; left: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(120deg,#0ff 0 2px,#000 2px 40px);
+  opacity: 0.22;
+  animation: neonAnim 10s infinite alternate;
+}
+@keyframes neonAnim {
+  0% { filter: blur(1px); opacity: 0.19;}
+  100% { filter: blur(10px); opacity: 0.25;}
+}
+.hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding-top: 34px;
+}
+.hero-bg {
+  position: absolute;
+  width: 100%; height: 290px;
+  left: 0; top: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0; transition: opacity 1.2s cubic-bezier(.68,.2,.37,1.01);
+}
+.hero-bg.visible { opacity: 1; }
+h1#mainTitle {
+  color: #00ffe7;
+  text-shadow: 0 0 15px #00ffe7b8, 0 0 3px #fff;
+  font-size: 2.5rem;
+  letter-spacing: 2.5px;
+  margin-top: 120px;
+  margin-bottom: 10px;
+  z-index: 2;
+}
+.upload-btn-bg {
+  display: inline-block;
+  margin-top: 6px;
+  cursor: pointer;
+  font-size: 1.02rem;
+  color: #00eaff;
+  background: #0e2a3a;
+  padding: 6px 14px;
+  border-radius: 7px;
+  border: 2px solid #00eaff6c;
+  box-shadow: 0 2px 8px #008cff1a;
+  font-weight: bold;
+  transition: background 0.18s, color 0.15s;
+}
+.upload-btn-bg:hover {
+  background: #002134;
+  color: #fff;
+}
+.button-container {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin: 25px 0 12px 0;
+  z-index: 3;
+}
+.btn, .neon-btn {
+  font-family: 'Orbitron', Arial, sans-serif;
+  font-size: 1.12rem;
+  border: none;
+  background: #0e2a3a;
+  color: #00eaff;
+  padding: 9px 21px;
+  border-radius: 7px;
+  cursor: pointer;
+  text-shadow: 0 0 9px #0ff, 0 1px 0 #fff6;
+  box-shadow: 0 2px 16px #00eaff44;
+  margin: 0 4px;
+  transition: background 0.18s, color 0.15s, transform 0.13s;
+}
+.btn:hover, .neon-btn:hover { background: #00c3ff; color: #fff; transform: scale(1.09);}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  padding: 0 0 16px 0;
+  z-index: 2;
+}
+.gallery img {
+  border-radius: 9px;
+  border: 2px solid #00eaff9a;
+  width: 170px; height: 130px;
+  object-fit: cover;
+  box-shadow: 0 0 14px #0ff2, 0 0 4px #fff3;
+  background: #031e2c;
+  cursor: pointer;
+  transition: transform 0.18s, box-shadow 0.16s;
+}
+.gallery img:hover {
+  transform: scale(1.07) rotate(-3deg);
+  box-shadow: 0 2px 30px #00eaff99;
+}
+.lightbox {
+  display: none;
+  position: fixed; z-index: 40;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,10,36,0.88);
+  justify-content: center; align-items: center;
+}
+.lightbox.visible { display: flex; }
+.lightbox img {
+  border-radius: 10px;
+  max-width: 85vw; max-height: 88vh;
+  border: 5px solid #0ffb;
+  box-shadow: 0 2px 50px #00eaffc2;
+  background: #02091c;
+}
+.close-btn {
+  position: absolute;
+  top: 15px; left: 19px;
+  font-size: 2.2rem;
+  background: none;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  text-shadow: 0 0 16px #f3d5ff, 0 1px 0 #fff6;
+}
+.floating-svg-btn {
+  position: fixed;
+  bottom: 28px;
+  z-index: 200;
+  box-shadow: 0 0 35px #00eaffcc, 0 0 4px #fff2;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.boom-btn { right: 40px; }
+.love-btn { left: 40px; }
+.floating-svg-btn svg {
+  filter: drop-shadow(0 0 25px #00eaff86);
+}
+.neon-glow {
+  animation: neonPulse 2.7s infinite alternate;
+}
+@keyframes neonPulse {
+  0% { filter: drop-shadow(0 0 10px #0ffb);}
+  100% { filter: drop-shadow(0 0 40px #00eaff) brightness(1.07);}
+}
+.letter-box {
+  position: fixed;
+  z-index: 99;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,5,26,0.88);
+  display: none;
+  justify-content: center; align-items: center;
+  animation: fadeIn 0.3s;
+}
+.letter-box.visible { display: flex; }
+.letter-content {
+  background: rgba(11,39,54,0.96);
+  border-radius: 13px;
+  border: 2px solid #00eaffc9;
+  padding: 34px 22px 20px 22px;
+  max-width: 440px;
+  min-width: 320px;
+  box-shadow: 0 0 55px #00eaff88;
+  color: #fff;
+}
+.letter-content textarea, #loveLetterInput {
+  width: 99%; min-height: 130px; font-size: 1.08rem;
+  border-radius: 9px;
+  border: 2px solid #00eaff99;
+  padding: 10px;
+  background: #051423;
+  color: #fff;
+  resize: vertical;
+  margin-bottom: 10px;
+  box-shadow: 0 0 12px #00eaff18;
+}
+#saveLetterBtn, #editLetterBtn {
+  background: #00eaff; color: #132a40; font-weight: bold;
+  padding: 8px 18px; margin-top: 8px; border-radius: 6px;
+  font-size: 1.02rem; border: none;
+  box-shadow: 0 2px 9px #00eaff66;
+  transition: background 0.18s, color 0.13s;
+}
+#saveLetterBtn:hover, #editLetterBtn:hover { background: #012a44; color: #fff; }
+footer {
+  background: none;
+  text-align: center;
+  color: #00eaff; font-size: 1.06rem;
+  padding: 24px 0 12px 0;
+  margin-top: 18px;
+}
+#loveTimer {
+  color: #00ffe7;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 7px;
+  letter-spacing: 1px;
+}
+.toast, .persistent-toast {
+  position: fixed; bottom: 150px; left: 50%; transform: translateX(-50%);
+  background: #00334d;
+  color: #00eaff;
+  border-radius: 7px;
+  padding: 12px 28px;
+  font-size: 1.15rem;
+  box-shadow: 0 0 15px #00eaffcc, 0 0 3px #fff6;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s;
+  z-index: 9999;
+}
+.toast[style*="opacity: 1"], .persistent-toast[style*="opacity: 1"] { opacity: 1; pointer-events: auto;}
+@media (max-width: 600px) {
+  .hero-bg { height: 160px; }
+  .gallery img { width: 90vw; height: 140px;}
+  .button-container { flex-wrap: wrap; gap: 8px;}
+  .floating-svg-btn { width: 85px !important; height: 85px !important;}
+  .boom-btn, .love-btn { right: 6vw; left: 6vw; }
+}
